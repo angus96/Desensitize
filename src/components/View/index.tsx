@@ -86,7 +86,7 @@ const View = (props: ViewProps) => {
             </p>
           </>
         ) : (
-          <p>你将在{date}开始脱敏</p>
+          <p style={{textAlign: 'center'}}>你将在<span className="view__content__nextdate">{date}</span>开始脱敏</p>
         )}
       </div>
 
