@@ -1,0 +1,78 @@
+.view {
+  height: 100vh;
+  position: relative;
+  font-size: .25rem;
+
+  &__head {
+    padding: 0.2rem;
+    color: #999;
+
+    &__time {
+      float: right;
+    }
+  }
+
+  &__foot {
+    color: #666;
+    bottom: 0.2rem;
+    text-align: center;
+    position: absolute;
+    bottom: 0.2rem;
+    left: 0;
+    right: 0;
+  }
+
+  &__content {
+    padding: 1.5rem;
+
+    &__name {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    &__current {
+        color: #999;
+    }
+
+    &__plan {
+        font-size: .6rem;
+        white-space: nowrap;
+    }
+
+    &__type,
+    &__number {
+        font-size: 1.1rem;
+
+        &--10 {
+            color: #ff4d4f
+        }
+
+        &--8 {
+            color: #ff7a45
+        }
+        &--6 {
+            color: #ffa940
+        }
+
+        &--5 {
+            color: #ffc53d
+        }
+
+        &--4 {
+            color: #ffec3d
+        }
+
+        &--3 {
+            color: #bae637
+        }
+
+        &--2 {
+            color: #13c2c2
+        }
+
+        &--1 {
+            color: #40a9ff
+        }
+    }
+  }
+}

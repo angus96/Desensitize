@@ -1,0 +1,12 @@
+node_modules
+dist/
+build/
+.sass-cache/
+.DS_Store
+.idea/
+.vscode/
+coverage
+versions/
+.webpackConfig.js
+debug.log
+.nine-workspace.json
