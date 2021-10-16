@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { State } from '../../types';
-import { readOnce } from '../../utils';
+import { readOnce, versions } from '../../utils';
 import './index.less'
 
 interface ViewProps {
@@ -25,7 +25,7 @@ const getNextDay = (date = new Date().toLocaleDateString()) => {
 }
 const getPlan = (date: string, nextDate?: string) => {
   const now = nextDate ? +new Date(nextDate) : +new Date(new Date().toLocaleDateString());
-  const then = +new Date(date);
+  const then = +new Date(date.split('-').join('/'));
   if (now < then) {
     return;
   }
@@ -41,6 +41,13 @@ const getPlan = (date: string, nextDate?: string) => {
     number: plan.dose[days - 1] || plan.dose.slice(-1),
   };
 };
+
+const NextType = (props: {type: number, emphasize: boolean}) => {
+  const {emphasize, type} = props;
+  return emphasize
+    ? <span className={`view__foot__type view__number--${type}`}>{type}</span>
+    : <>{type}</>
+}
 
 const View = (props: ViewProps) => {
   const name = readOnce('name');
@@ -64,9 +71,11 @@ const View = (props: ViewProps) => {
   }
 
   const now = new Date().toLocaleDateString().split('/').join('-');
+  const iosCompatible =  versions.iPad || versions.ios || versions.iPhone;
+  const shouldNotice = nextPlan && nextPlan.type !== plan?.type;
 
   return (
-    <div className="view">
+    <div className={`view ${iosCompatible ? 'ios-compatible' : ''}`}>
       <div className="view__head">
         <span className="view__head__reset" onClick={reset}>重新设定</span>
         <span className="view__head__time">开始时间：{date}</span>
@@ -79,9 +88,9 @@ const View = (props: ViewProps) => {
             <p className="view__content__current">今日计划, {now}</p>
             <p className="view__content__plan">
               畅迪
-              <span className={`view__content__type view__content__type--${plan.type}`}>{plan.type}</span>
+              <span className={`view__content__type view__number--${plan.type}`}>{plan.type}</span>
               号，
-              <span className={`view__content__number view__content__number--${plan.number}`}>{plan.number}</span>
+              <span className={`view__content__number view__number--${plan.number}`}>{plan.number}</span>
               滴
             </p>
           </>
@@ -92,7 +101,9 @@ const View = (props: ViewProps) => {
 
       <div className='view__foot'>
         {
-          nextPlan ? `明日计划：畅迪${nextPlan.type}号，${nextPlan.number}滴` : undefined
+          nextPlan
+          ? <>明日计划：畅迪<NextType type={nextPlan.type} emphasize={!!shouldNotice} />号，{nextPlan.number}滴</>
+          : undefined
         }
       </div>
     </div>

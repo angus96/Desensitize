@@ -1,7 +1,12 @@
 .view {
   height: 100vh;
+  overflow: hidden;
   position: relative;
-  font-size: .25rem;
+  font-size: 0.25rem;
+
+  &.ios-compatible {
+    height: calc(100vh - 75px);
+  }
 
   &__head {
     padding: 0.2rem;
@@ -20,63 +25,70 @@
     bottom: 0.2rem;
     left: 0;
     right: 0;
+
+    &__type,
+    &__number {
+      font-size: 0.8rem;
+    }
   }
 
   &__content {
-    padding: 3rem 1.5rem;
+    padding: 2rem 1.5rem;
 
     &__name {
-      margin-bottom: 3rem;
+      margin-bottom: 20vh;
       text-align: center;
     }
 
     &__current {
-        color: #999;
+      color: #999;
     }
 
     &__plan {
-        font-size: .6rem;
-        white-space: nowrap;
+      font-size: 0.6rem;
+      white-space: nowrap;
     }
 
     &__nextdate {
-        font-size: .4rem;
+      font-size: 0.4rem;
     }
 
     &__type,
     &__number {
-        font-size: 1.1rem;
+      font-size: 1.1rem;
+    }
+  }
 
-        &--10 {
-            color: #ff4d4f
-        }
+  &__number {
+    &--10 {
+      color: #ff4d4f;
+    }
 
-        &--8 {
-            color: #ff7a45
-        }
-        &--6 {
-            color: #ffa940
-        }
+    &--8 {
+      color: #ff7a45;
+    }
+    &--6 {
+      color: #ffa940;
+    }
 
-        &--5 {
-            color: #ffc53d
-        }
+    &--5 {
+      color: #ffc53d;
+    }
 
-        &--4 {
-            color: #ffec3d
-        }
+    &--4 {
+      color: #ffec3d;
+    }
 
-        &--3 {
-            color: #bae637
-        }
+    &--3 {
+      color: #bae637;
+    }
 
-        &--2 {
-            color: #13c2c2
-        }
+    &--2 {
+      color: #13c2c2;
+    }
 
-        &--1 {
-            color: #40a9ff
-        }
+    &--1 {
+      color: #40a9ff;
     }
   }
 }

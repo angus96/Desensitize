@@ -43,7 +43,7 @@ const Home = (props: HomeProps) => {
 
   return (
     <div className="home">
-      <h1 className="home__title">脱敏计划</h1>
+      <h1 className="home__title">脱敏助手</h1>
       <Field label="我该怎么称呼你？">
         <input value={name} onChange={onNameChange} />
       </Field>
