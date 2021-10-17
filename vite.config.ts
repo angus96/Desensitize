@@ -18,6 +18,7 @@ export default defineConfig({
   plugins: [
     react(),
     faviconsPlugin({
+      start_url: '/Desensitize/website/',
       icons: {
         favicons: iconSource,
         android: iconSource,
